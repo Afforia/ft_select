@@ -1,0 +1,15 @@
+`vi'
+String of commands to make the cursor invisible.
+`ve'
+String of commands to return the cursor to normal.
+`mr'
+String of commands to enter reverse-video mode.
+`me'
+String of commands to turn off all appearance modes, 
+including standout mode and underline mode. On some terminals 
+it also turns off alternate character set mode; on others, it may not. 
+This capability must be present if any of `mb' ... `mr' is present.
+`us'
+String of commands to turn on underline mode or to output a magic cookie to start underlining.
+`ue'
+String of commands to turn off underline mode or to output a magic cookie to stop underlining.
