@@ -29,7 +29,7 @@ $(NAME): libft/libft.a $(SUB_DIR) $(OBJ)
 	@printf "\r\033[32;1mCreate $(NAME)!                                      \n\033[0m"
 	@printf "\033[?25h"
 
-$(OBJ_D)/%.o: $(SRC_D)/%.c $(INC_D)/colors.h
+$(OBJ_D)/%.o: $(SRC_D)/%.c $(INC_D)/colors.h $(INC_D)/keys.h
 	@printf "\033[?25l"
 	@gcc -I$(INC_D) -I$(LIB_D) -I$(INCL_DIR_CALC) $(FLAGS) -o $@ -c $<
 	@printf "\r\033[34;1mNow compiling $@!                                    \033[0m"
