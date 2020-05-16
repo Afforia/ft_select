@@ -13,3 +13,6 @@ This capability must be present if any of `mb' ... `mr' is present.
 String of commands to turn on underline mode or to output a magic cookie to start underlining.
 `ue'
 String of commands to turn off underline mode or to output a magic cookie to stop underlining.
+
+TODO: makefile
+TODO: add select_args and current_arg

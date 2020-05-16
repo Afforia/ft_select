@@ -11,14 +11,11 @@
 #******************************************************************************#
 
 NAME = libft.a
+CFLAGS := -g -Wall -Werror -Wextra 
+INCLUDES := -I$(HEADER_DIR)
+HEADER_DIR := .
 
-INCLUDES = libft.h
-
-CC = gcc
-
-CFLAGS = -Wall -Wextra
-
-SRC = ft_atoi.c \
+SRC := ft_atoi.c \
 				ft_bzero.c \
 				ft_isalnum.c \
 				ft_isalpha.c \
@@ -77,18 +74,29 @@ SRC = ft_atoi.c \
 				ft_tolower.c \
 				ft_toupper.c \
 
-OBJ = $(SRC:.c=.o)
+OBJECT_LIST := $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) $(CFLAGS) -c $(SRC) -I $(INCLUDES)
-	ar rc $(NAME) $(OBJ)
+.PHONY: all clean fclean
+
+$(NAME): $(OBJECT_LIST)
+	@/usr/bin/ar rcs $(NAME) $(OBJECT_LIST)
+	@/usr/bin/ranlib $(NAME)
+	@printf "\r\033[32;1mCreate $(NAME)!                                     \n\033[0m"
+	@printf "\033[?25h"
+
+%.o: %.c $(HEADER_DIR)/libft.h
+	@printf "\033[?25l"
+	@gcc $(INCLUDE) $(CFLAGS) -o $@ -c $<
+	@printf "\r\033[34;1mNow compiling $@!                                   \033[0m"
 
 clean:
-	/bin/rm -f $(OBJ) libft.h.gch
+	@/bin/rm -f $(OBJECT_LIST)
+	@printf "\r\033[31mDell all .o files!                                     \n\033[0m"
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
+	@printf "\r\033[31;1mDell $(NAME)!                                        \n\033[0m"
 
-re: fclean all
+re:	fclean all

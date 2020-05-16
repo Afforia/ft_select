@@ -4,9 +4,10 @@
 #include <termios.h>
 #include <unistd.h>
 #include <signal.h>
-#include "libft/libft.h"
+#include "../libft/libft.h"
 #include <stdio.h>
 #include <termios.h>
+#include "colors.h"
 
 typedef struct  s_arg {
     char            *argv;
@@ -100,6 +101,8 @@ int             main(int argc, char **argv) {
         tputs(tgetstr("us", NULL), 1, putint);
         tputs(tgetstr("cl", NULL), 1, putint);
         loop(ws, arg_list);
+    } else {
+        ft_putendl("ft_select usage: ");
     }
     tputs(tgetstr("ue", NULL), 1, putint);
     tcsetattr(0, TCSADRAIN, &shell->old_param);
